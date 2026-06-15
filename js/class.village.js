@@ -1,7 +1,9 @@
 "use strict";
+import Building from "./class.building.js";
+import NobleBuilding from "./class.nobleBuilding.js";
 
-import NobleCitizen from "./class.nobleCitizen";
-import Citizen from "./class.citizen";
+import Citizen from "./class.citizen.js";
+import NobleCitizen from "./class.nobleCitizen.js";
 
 /**
  * Create a Village class. Each village should have
@@ -27,33 +29,35 @@ export default class Village{
     addCitizen(name, noble = false){
         let citizen = noble ?  new NobleCitizen(name): new Citizen(name);
         this.citizens.push(citizen);
-        this.shelterTheWorthy(citizen);
+
 
 
     }
 
-
-    shelterTheWorthy(){
-        for(const building of this.buildings){
-            if(building.addResident(citizen))
-                return;
+    shelterTheWorthy() {
+        for (const citizen of this.citizens) {
+            for (const building of this.buildings) {
+                if (building.addResident(citizen)) {
+                    break;
+                }
+            }
         }
-
-
     }
 
-    printCitizenDirectory(){
-        //For all buildings: List your residents
-        for(const building of this.buildings){
+    printCitizenDirectory() {
+        for (const building of this.buildings) {
             building.listAllResidents();
         }
         this.listAllHomeless();
     }
-    listAllHomeless(){
-        console.log("%c Homeless people of "this.name+":", "background-color, #a00; color: white");
-        for(const citizen of this.citizens){
-            if(citizen.home == null)
-                console.log(String(citizen.home));
+
+    listAllHomeless() {
+        console.log("%c Homeless people of " + this.name + ":", "background-color:#a00; color:white");
+
+        for (const citizen of this.citizens) {
+            if (citizen.home === null) {
+                console.log(citizen.toString());
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 "use strict";
-import Citizen from "./class.citizen";
+import Citizen from "./class.citizen.js";
 
 /**
  * Create a NobleCitizen class. A Noble Citizen is basically
@@ -13,7 +13,7 @@ export default class NobleCitizen extends Citizen {
         this.rank = 1;
 
     }
-    toString(){
-        return '${this.name}, NobleCitizen';
+    toString() {
+        return `${this.name}, NobleCitizen`;
     }
 };
