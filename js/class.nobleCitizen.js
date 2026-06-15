@@ -14,6 +14,6 @@ export default class NobleCitizen extends Citizen {
 
     }
     toString() {
-        return `${this.name}, NobleCitizen`;
+        return `${this.name}, Noble Citizen`;
     }
 };
